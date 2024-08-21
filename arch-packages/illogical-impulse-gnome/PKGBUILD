@@ -7,8 +7,8 @@ license=(None)
 depends=(
 	polkit-gnome
 	gnome-keyring
-	gnome-control-center
-	blueberry networkmanager
+	# gnome-control-center
+	# blueberry networkmanager
 	gammastep
 	gnome-bluetooth-3.0
 )
