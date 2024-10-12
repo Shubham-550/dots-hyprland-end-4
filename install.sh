@@ -144,14 +144,14 @@ esac
 
 
 # Why need cleanbuild? see https://github.com/end-4/dots-hyprland/issues/389#issuecomment-2040671585
-# Why install deps by running a seperate command? see pinned comment of https://aur.archlinux.org/packages/hyprland-git
+# Why install deps by running a seperate command? see pinned comment of https://aur.archlinux.org/packages/hyprland
 case $SKIP_HYPR_AUR in
   true) sleep 0;;
   *)
 	  hyprland_installflags="-S"
 	  $ask || hyprland_installflags="$hyprland_installflags --noconfirm"
-    v yay $hyprland_installflags --asdeps hyprutils-git hyprlang-git hyprcursor-git hyprwayland-scanner-git
-    v yay $hyprland_installflags --answerclean=a hyprland-git
+    v yay $hyprland_installflags --asdeps hyprutils hyprlang hyprcursor hyprwayland-scanner
+    v yay $hyprland_installflags --answerclean=a hyprland
     ;;
 esac
 
@@ -179,7 +179,7 @@ esac
 v sudo usermod -aG video,i2c,input "$(whoami)"
 v bash -c "echo i2c-dev | sudo tee /etc/modules-load.d/i2c-dev.conf"
 v systemctl --user enable ydotool --now
-v gsettings set org.gnome.desktop.interface font-name 'Rubik 11'
+v gsettings set org.gnome.desktop.interface font-name 'JetBrainsMono Nerd Font Mono 11'
 
 #####################################################################################
 printf "\e[36m[$0]: 2. Installing parts from source repo\e[0m\n"

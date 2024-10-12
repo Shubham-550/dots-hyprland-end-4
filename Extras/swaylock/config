@@ -1,7 +1,7 @@
 daemonize
 ignore-empty-password
-font=Rubik
-font-size=23
+font=JetBrainsMono Nerd Font
+font-size=24
 
 clock
 timestr=%R
