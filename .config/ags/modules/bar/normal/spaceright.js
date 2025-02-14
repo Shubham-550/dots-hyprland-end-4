@@ -72,13 +72,13 @@ export default (monitor = 0) => {
         onScrollUp: () => {
             if (!Audio.speaker) return;
             if (Audio.speaker.volume <= 0.09) Audio.speaker.volume += 0.01;
-            else Audio.speaker.volume += 0.03;
+            else Audio.speaker.volume += 0.05;
             Indicator.popup(1);
         },
         onScrollDown: () => {
             if (!Audio.speaker) return;
             if (Audio.speaker.volume <= 0.09) Audio.speaker.volume -= 0.01;
-            else Audio.speaker.volume -= 0.03;
+            else Audio.speaker.volume -= 0.05;
             Indicator.popup(1);
         },
         child: Widget.Box({

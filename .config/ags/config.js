@@ -15,7 +15,8 @@ import Cheatsheet from './modules/cheatsheet/main.js';
 import Dock from './modules/dock/main.js';
 import Corner from './modules/screencorners/main.js';
 import Crosshair from './modules/crosshair/main.js';
-import Indicator from './modules/indicators/main.js';
+import Indicator, { PopupNotifications } from './modules/indicators/main.js';
+// import KeyVis from './modules/indicators/keyVis.js';
 import Osk from './modules/onscreenkeyboard/main.js';
 import Overview from './modules/overview/main.js';
 import Session from './modules/session/main.js';
@@ -44,6 +45,8 @@ const Windows = () => [
     forMonitors(Crosshair),
     Overview(),
     forMonitors(Indicator),
+    forMonitors(PopupNotifications),
+    // forMonitors(KeyVis),
     forMonitors(Cheatsheet),
     SideLeft(),
     SideRight(),

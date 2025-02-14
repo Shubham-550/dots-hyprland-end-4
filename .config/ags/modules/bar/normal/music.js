@@ -86,15 +86,27 @@ const TrackProgress = () => {
         // Set circular progress value
         circprog.css = `font-size: ${Math.max(mpris.position / mpris.length * 100, 0)}px;`
     }
-    return AnimatedCircProg({
+    const progressWidget = AnimatedCircProg({
         className: 'bar-music-circprog',
         vpack: 'center', hpack: 'center',
         extraSetup: (self) => self
             .hook(Mpris, _updateProgress)
-            .poll(3000, _updateProgress)
-        ,
-    })
-}
+            .poll(3000, _updateProgress),
+    });
+
+    // Wrap the progress widget in EventBox to handle clicks
+    return EventBox({
+        child: progressWidget,
+        onPrimaryClick: () => {
+            const mpris = Mpris.getPlayer('');
+            if (mpris) {
+                // Toggle play/pause on click
+                execAsync('playerctl play-pause').catch(print);
+                showMusicControls.value = !showMusicControls.value
+            }
+        }
+    });
+};
 
 const switchToRelativeWorkspace = async (self, num) => {
     try {
@@ -200,7 +212,7 @@ export default () => {
                         }),
                         setup: (self) => self.hook(Mpris, label => {
                             const mpris = Mpris.getPlayer('');
-                            self.revealChild = (!mpris);
+                            // self.revealChild = (!mpris);
                         }),
                     })
                 ],
@@ -208,8 +220,8 @@ export default () => {
         });
     }
     return EventBox({
-        onScrollUp: (self) => switchToRelativeWorkspace(self, -1),
-        onScrollDown: (self) => switchToRelativeWorkspace(self, +1),
+        // onScrollUp: (self) => switchToRelativeWorkspace(self, -1),
+        // onScrollDown: (self) => switchToRelativeWorkspace(self, +1),
         child: Box({
             className: 'spacing-h-4',
             children: [
